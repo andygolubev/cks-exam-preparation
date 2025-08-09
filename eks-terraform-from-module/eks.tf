@@ -13,7 +13,7 @@ locals {
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = ">= 21.0"
-  kubernetes_version = "1.33"
+  kubernetes_version = var.kubernetes_version
 
   name    = local.cluster_name
 
@@ -57,6 +57,8 @@ module "eks" {
 
   # Optionally grant current caller admin cluster access
   enable_cluster_creator_admin_permissions = true
+
+  # The module manages access entries; explicit aws-auth management not supported here
 }
 
 

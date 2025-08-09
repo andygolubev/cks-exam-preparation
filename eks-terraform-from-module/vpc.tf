@@ -24,6 +24,12 @@ module "vpc" {
   flow_log_destination_type = "cloud-watch-logs"
   flow_log_traffic_type     = "ALL"
 
+  # Create required resources for CloudWatch flow logs delivery
+  create_flow_log_cloudwatch_log_group = true
+  create_flow_log_cloudwatch_iam_role  = true
+  flow_log_cloudwatch_log_group_name_suffix        = "${var.project}-${var.environment}"
+  flow_log_cloudwatch_log_group_retention_in_days  = 30
+
   public_subnet_tags = {
     "kubernetes.io/role/elb" = "1"
   }
