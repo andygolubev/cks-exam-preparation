@@ -13,7 +13,7 @@ locals {
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = ">= 21.0"
-  kubernetes_version = var.kubernetes_version
+  kubernetes_version = "1.33"
 
   name    = local.cluster_name
 
@@ -43,7 +43,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     default = {
-      ami_type       = "AL2_x86_64"
+      ami_type       = "AL2023_x86_64_STANDARD"
       # ami_type       = "BOTTLEROCKET_x86_64"
       disk_size      = 50
       instance_types = var.node_instance_types
