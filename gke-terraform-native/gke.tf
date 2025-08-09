@@ -49,7 +49,7 @@ resource "google_container_cluster" "primary" {
     }
   }
 
-  datapath_provider = "ADVANCED_DATAPATH" # Dataplane V2
+  datapath_provider = "LEGACY_DATAPATH"
   network_policy {
     enabled  = true
     provider = "CALICO"
