@@ -9,6 +9,10 @@ metadata:
 iam:
   withOIDC: true
 
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+
 managedNodeGroups:
   - name: standard-workers
     instanceType: t3.medium
@@ -19,3 +23,13 @@ managedNodeGroups:
     iam:
       attachPolicyARNs:
         - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+
+addons:
+  - name: vpc-cni
+    version: latest
+  - name: kube-proxy
+    version: latest
+  - name: coredns
+    version: latest
+  - name: metrics-server
+    version: latest
