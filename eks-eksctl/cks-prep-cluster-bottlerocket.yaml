@@ -14,12 +14,14 @@ cloudWatch:
     enableTypes: ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
 managedNodeGroups:
-  - name: standard-workers-al2023
+  - name: standard-workers
     instanceType: t3.medium
     desiredCapacity: 3
     minSize: 2
     maxSize: 4
-    amiFamily: AmazonLinux2023
+    amiFamily: Bottlerocket
+    bottlerocket:
+      enableAdminContainer: true
     iam:
       attachPolicyARNs:
         - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
