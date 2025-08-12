@@ -15,4 +15,7 @@ managedNodeGroups:
     desiredCapacity: 3
     minSize: 2
     maxSize: 4
-
+    amiFamily: Bottlerocket
+    iam:
+      attachPolicyARNs:
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
